@@ -7,13 +7,13 @@ import Link from 'next/link';
 import { BsGrid1X2 } from "react-icons/bs";
 import { LuCornerUpLeft } from "react-icons/lu";
 import { CiMedicalCase } from "react-icons/ci";
-import Fadjmalogo from '../public/fadjmalogo.png';
+// import Fadjmalogo from '../public/fadjmalogo.png';
 import styled from 'styled-components';
 import { IoLanguageOutline } from 'react-icons/io5'; 
 import { IoChevronDownOutline } from "react-icons/io5"; 
 import { FaBars } from "react-icons/fa";
 import { FaCircle, FaCartPlus } from "react-icons/fa"; 
-import  ProductPage from "../../dashboard/page";
+// import  ProductPage from "../../dashboard/page";
 
 const NavbarContainer = styled.div`
   display: flex;

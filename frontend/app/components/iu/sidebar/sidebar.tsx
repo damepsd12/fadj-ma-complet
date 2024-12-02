@@ -5,7 +5,7 @@ import './sidebar.ts';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import Fadjma from '../public/fadjma.jpg';
+// import Fadjma from '../public/fadjma.jpg';
 import { FaEllipsisV } from 'react-icons/fa';
 import { BsGrid1X2 } from "react-icons/bs";
 import { LuCornerUpLeft } from "react-icons/lu";
