@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Fadjmalogo from '../public/fadjmalogo.png';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
