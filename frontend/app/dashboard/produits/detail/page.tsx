@@ -9,11 +9,12 @@ import { PiCopyrightLight } from "react-icons/pi";
 
 
 const Container = styled.div`
-  padding: 60px 40px 40px 40px;
+  padding: 70px 40px 40px 40px;
   background-color: #EDF1F5;
   box-sizing: border-box;
 `
 const Row = styled.div`
+  margin-bottom: 20px;
 `
 const Title = styled.div`
    display: flex;
@@ -35,24 +36,29 @@ const Rowdt = styled.div`
 const BoxText = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     justify-content: space-between;
 `
 const SectionTitle = styled.div`
 `
 const H2 = styled.h3`
     font-weight: bold; 
+    margin-bottom: 20px;
 `;
 const H1 = styled.h2`
     font-size: 26px;
     padding: 0px;
     font-weight: 700; 
+    margin-bottom: 10px;
 `;
 const P = styled.p`
+   margin-bottom: 20px;
    font-size: 15px;
    font-weight: 400; 
    justify-content: center;
 `;
 export const H4 = styled.h4`
+  margin-bottom: 10px;
 `
 
 const DetailsPage = () => {

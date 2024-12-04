@@ -183,58 +183,7 @@ const Jaune = styled.div`
 const P = styled.p`
   justify-content: end;
 `;
-// NAVBAR MOBILE START
-const Adminpro = styled.div`
-     display: flex;
-     align-items: center;
-     justify-content: start;
-`
-const Profil = styled.div`
-    border-radius: 50%;
-     color: #000;
-`;
-const Name = styled.div`
-     text-align: start;
-     margin-left: 20px;
-    
 
-
-`; 
-const Ul = styled.ul`
-    display: inline-block;
-    padding: 0px;
-    margin: 0px;
-    margin-bottom: 30vh;
-    text-align: start;
-
-
-    @media (max-width: 768px) {
-    margin-bottom: 20px;
-  }
-`;
-// Créer le composant Navbar
-const Nav = styled.div`
-  padding: 10px 0px 10px 0px;
-  color: #000;
-  display: inline-block;
-  text-align: start;
-
-
-`;
-const Li = styled.li`
-    list-style: none;
-    margin-bottom: 20px;
-    text-align: start;
-`;
-const A  = styled.a`
-    font-size: 16px;
-    text-decoration: none;
-    color: #000;
-    
-
-    
-`;
-// NAVBAR MOBILE END
 const languages = [
   'Français (France)',
   'Anglais (USA)',
@@ -357,44 +306,6 @@ const Navbar = () => {
           {dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()}
         </Greeting>
         {/* Liens de navigation - Ajoutez les éléments ici */}
-        <Nav>
-           <Ul>
-               <Li>
-                  <Link href="/dashboard" passHref style={{ textDecoration:'none' }}>
-                        <Adminpro>
-                            <Profil>
-                               <BsGrid1X2 />
-                            </Profil>
-                            <Name>
-                            <span>Tableau de bord</span>
-                            </Name>
-                        </Adminpro>
-                  </Link>
-               </Li>
-               <Li>
-                  <Link href="/dashboard/produits" passHref style={{ textDecoration:'none' }}>
-                    <Adminpro>
-                        <Profil>
-                            <CiMedicalCase />
-                        </Profil>
-                        <Name>
-                            <span>Médicaments</span>
-                        </Name>
-                    </Adminpro>
-                  </Link>
-              </Li>
-           </Ul>
-            <Link  href="/login" passHref style={{ textDecoration:'none' }}>
-                <Adminpro  style={{ textDecoration:'none' }}>
-                    <Profil>
-                        <LuCornerUpLeft />
-                    </Profil>
-                    <Name>
-                        <span>Deconnexion</span>
-                    </Name>
-                </Adminpro>
-            </Link>
-      </Nav>
       </MobileMenu>
     </NavbarContainer>
   );

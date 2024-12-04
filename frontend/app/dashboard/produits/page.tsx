@@ -79,6 +79,7 @@ const Button = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+ 
 
   & > svg {
     margin-right: 5px;
@@ -243,7 +244,7 @@ const MedicamentPage = () => {
             )}
           </DropdownContainer>
         </Row>
-        {/* Liste des hôtels */}
+        {/* Liste des produit */}
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {products.length === 0 ? (
             <p style={{ display: 'none'}}>Aucun médicament disponible.</p>

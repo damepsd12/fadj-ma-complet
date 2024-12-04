@@ -157,7 +157,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
     description: "",
     dosage: "",
     price: "",
-    currency: "XOF",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -218,7 +217,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
             />
           </ModalHeader>
           <Title>
-            <p style={{ fontWeight: "bold", marginBottom: "0px", marginBottom: "10px",}}>Obligatoire</p>
+            <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Obligatoire</p>
             <p style={{ marginBottom: "40px", color: "#ccc", fontSize: "12px" }}>Donnez plus de détails possible</p>
           </Title>
           <Row>

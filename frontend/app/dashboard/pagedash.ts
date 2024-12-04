@@ -3,25 +3,35 @@ import styled from 'styled-components';
 
 // Styled components
 export const ProductageContainer = styled.div`
-  display: flex;
-  background-color: #EDF1F5;
+  display: inline-block;
   flex-direction: column;
+  background-color: #EDF1F5;
   padding: 70px 20px 20px 20px;
   box-sizing: border-box;
   margin-top: 0px;
+  box-sizing: border-box;
 
 
   @media (max-width: 768px) {
-    padding: 60px 20px 20px 20px;
-    margin-top: 0px;
+    padding: 70px 10px 18vh 10px;
+    margin: 0px;
+    width: 100%;
+    box-sizing: border-box;
   }
 `;
 
 export const Button = styled.a`
       padding: 12px 15px;
       background-color: #FFF;
-      color: #000;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 22.5px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
       text-decoration: none;
+      color: #000000;
       border: 1px solid #000;
       border-radius: 5px;
     
@@ -46,13 +56,21 @@ export const ProductageRow = styled.div`
   @media (max-width: 768px) {
     display: flex;
     width: 100%;
+    gap: 0px;
     justify-content: space-between;
-    gap: 10px;
+    margin: 10px 0px 20px 0px; 
   };
 
   @media (max-width: 320px) {
     display: inline-block; 
     width: 100%;
+    padding: 0px;
+  }
+  @media (max-width: 425px) {
+    display: flex!important;
+    display: block!important; 
+    width: 100%;
+    flex-direction: column!important;
     padding: 0px;
   }
     
@@ -67,18 +85,33 @@ export const ProductageBox = styled.div`
     margin-bottom: 30px;
     justify-content: start;
   }
+  @media (max-width: 425px) {
+    display:block; 
+    width: 100%;
+    justify-content: start;
+    margin-bottom: 30px;
+    padding: 0px;
+  }
 `;
 export const ButtonContainer = styled.div`
-      margin-left: 20px;
+      margin-left: 0px;
 
-
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    margin-left: 0px;
+  };
   @media (max-width: 320px) {
     margin-bottom: 20px;
     margin-left: 0px;
+  };
+ @media (max-width: 425px) {
+     margin-bottom: 20px;
+    display:block; 
+    width: 100%;
+    margin-left: 0px;
   }
 `;
-// LA FUNCTION MAPPING START
-
+// CARD LA FUNCTION MAPPING START
 export const Flex = styled.div`
   display: flex;
   flex-wrap: nowrap;
@@ -98,88 +131,105 @@ export const Flex = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
   }
-`;
-
-export const IconWrapper = styled.div<{ bgColor?: string }>`
-  align-items: center;
-  font-size: 26px;
-   font-weight: bold;
-  color: white;
-
-  @media (max-width: 768px) {
-    font-size: 18px;
+  @media (max-width: 425px) {
+    width: 100%; 
+    display: inline-block!important;
   }
-`;
-
-export const Content = styled.div`
-  display: inline-block;
-  padding: 8px;
-  text-align: center;
-
-  h2 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 5px;
-    color: #333;
-  }
-
-  p {
-    font-size: 10px;
-    color: #777;
-    margin-top: 5px;
-  }
-
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 16px;
-    }
-    div{
-      font-size: 12px;
-    }
-  }
+    
 `;
 export const Box = styled.div<{ borderColor?: string }>`
-  padding: 10px 0px 0px 0px;
-  display: inline-block;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(25% - 20px); // Largeur égale pour 4 cartes par ligne
+  min-height: 150px;
   box-sizing: border-box;
   border-radius: 5px;
   text-align: center;
-  align-items: center;
   border: 2px solid ${({ borderColor }) => borderColor || 'transparent'};
+  padding: 10px 0px 0px 0px!important; 
+  background-color: #fff; 
+
+  @media (max-width: 1024px) {
+    width: calc(33.33% - 20px); // 3 cartes par ligne
+  };
 
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
-  }
+    width: calc(25% - 10px); 
+  };
 
+  @media (max-width: 425px) {
+    width: 100%!important; // 1 carte par ligne sur mobile
+    margin-bottom: 20px;
+  };
   @media (max-width: 320px) {
     width: 100%; 
+    margin-bottom: 20px;
   }
 `;
-
 export const Description = styled.div<{ bgColor?: string }>`
   display: flex;
   text-align: center;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: ${({ bgColor }) => bgColor || 'transparent'}; 
-  padding: 8px; 
+  color: #1D242E;
+  gap: 10px;
+  background-color: ${({ bgColor }) => bgColor || 'transparent'};
+  padding: 8px;
+  width: 100%;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
 
   p {
-    display: flex;
-    text-align: center;
     margin: 0px;
-  }
-  @media (max-width: 320px) {
-        text-align: center;
-        justify-content: center;
-
-     
-  }
-  @media(max-width: 768px) {
-    p{ 
-      font-size: 14px;
-    };
-    
+    font-size: 12px;
+    align-items: center;
   }
 `;
+export const IconWrapper = styled.div`
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+`;
+
+export const Content = styled.div`
+     display: inline-block;
+  h2 {
+      padding: 8px;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 22px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+
+  p{
+    font-size: 10px;
+    margin: 5px 0;
+  }
+    div{
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 22px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+    }
+`;
+// CARD LA FUNCTION MAPPING  END

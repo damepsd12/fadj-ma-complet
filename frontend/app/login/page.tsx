@@ -26,6 +26,9 @@ const Form = styled.form`
   @media (max-width: 320px) {
     padding: 10px;
   };
+  @media (max-width: 425px) {
+    padding: 10px;
+  };
 `;
 
 const Label = styled.label`

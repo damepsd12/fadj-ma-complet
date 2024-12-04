@@ -11,7 +11,13 @@ import { useRouter } from 'next/navigation';
 import {ProductageContainer, Button, ProductageRow, ProductageBox, ButtonContainer, Flex, Box,  IconWrapper, Content, Description } from "./pagedash";
 
 const H1 = styled.h1`
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 24px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
     color: #343a40; 
 
     @media (max-width: 320px) {
@@ -19,8 +25,14 @@ const H1 = styled.h1`
   }
 `;
 const P = styled.p`
-    font-size: 16px;
-    color: #6c757d; 
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
     text-align: center;
 
     @media (max-width: 320px) {
@@ -42,6 +54,7 @@ interface CARD {
   cardp: string; 
   para: string; 
   icon2: React.ReactNode;
+  cardi?: React.ReactNode;
 }
 
 const card: CARD[] = [
@@ -152,6 +165,12 @@ const Table = styled.div`
   flex-direction: column;
   width: 100%;
   }
+  @media (max-width: 425px) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  }
 `;
 const CardTable = styled.div`
   border: 1px solid #ccc; 
@@ -167,27 +186,46 @@ const CardTable = styled.div`
     transform: scale(1.02); // zoom léger au survol
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 425px) {
   display: block;
+  width: 100%;
+  }
+  @media (max-width: 425px) {
+  display: block;
+  width: calc(100% - 15px); 
   width: 100%;
   }
 `;
 
 const Title = styled.h4`
   margin: 0;
-  color: #333; 
+  color: #1D242E;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
 
   @media (max-width: 768px) {
-    font-size: 12px;
+   
   }
 `;
 
 const Text = styled.p`
-  color: #666; 
-  font-size: 16px;
+  color:#1D242E;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 
   @media (max-width: 768px){
-    font-size: 10px !important;
+   
   }
 
    
@@ -195,6 +233,7 @@ const Text = styled.p`
 const Info = styled.div`
   margin-top: 10px;
   display: flex;
+   font-family: 'Poppins', sans-serif;
   justify-content: space-between;
   flex-direction: row;
   box-sizing: border: border:box;
@@ -203,18 +242,32 @@ const Info = styled.div`
 
 
   @media (max-width: 768px) {
-   
-      div{ 
-      font-size: 11px;
-    }
+  }
 `;
 
 const InfoItem = styled.div`
+ font-family: 'Poppins', sans-serif;
   display: inline-block;
   align-items: start;
   margin: 5px 0;
   padding-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 
+
+  h3{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+  }
 `;
 
 
@@ -235,22 +288,21 @@ const ProductPage = () => {
                     <Button href={reportUrl} download={reportName}> Télécharger le rapport</Button>
             </ButtonContainer>
         </ProductageRow>
-      <Flex>
-        {card.map((card) => (
-          <Box key={card.id} borderColor={borderColors[card.id]}>
-            <IconWrapper>{card.icon}</IconWrapper>
-            <Content>
-              <h2>{card.title}</h2>
-              <div>{card.cardp} {card.cardi}</div>
-            </Content>
-            <Description  bgColor={borderColors[card.id]}>
-                  <p>{card.para} </p>
-                  <p>{card.icon2}</p>
-            </Description>
-          </Box>
-        ))}
-      </Flex>
-
+        <Flex>
+          {card.map((card) => (
+            <Box key={card.id} borderColor={borderColors[card.id]}>
+              <IconWrapper>{card.icon}</IconWrapper>
+              <Content>
+                <h2>{card.title}</h2>
+                <div>{card.cardp} {card.cardi}</div>
+              </Content>
+              <Description bgColor={borderColors[card.id]}>
+                <p>{card.para}</p>
+                <p>{card.icon2}</p>
+              </Description>
+            </Box>
+          ))}
+        </Flex>
       <Table>
       {table.map(table => (
         <CardTable key={table.id}>
@@ -275,9 +327,9 @@ const ProductPage = () => {
           </Info>
         </CardTable>
       ))}
-    </Table>
-
+      </Table>
     </ProductageContainer>
+    
   );
 };
 

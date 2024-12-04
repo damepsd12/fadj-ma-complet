@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
    width: 100%;
-   padding: 0px;
+   padding: 0px 0px 37vh 0px;
    margin: 0px;
    background-color: #EDF1F5;
 `;
@@ -22,11 +22,22 @@ export const Row = styled.div`
 `;
 
 export const H1 = styled.h1`
-    line-height: 40px;
+    font-family: ' Poppins' sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
     margin-bottom: 0px;
 
-    @media (max-width: 320px) {
-     font-size: 18px
+  @media (max-width: 320px) {
+     font-size: 15px
+     font-weight: 700;
+  }
+     @media only screen and(max-width: 426px) {
+     font-size: 12px
   }
 `;
 

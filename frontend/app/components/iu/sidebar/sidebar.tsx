@@ -1,183 +1,238 @@
 "use client"; 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import './sidebar.ts';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-// import Fadjma from '../public/fadjma.jpg';
 import { FaEllipsisV } from 'react-icons/fa';
 import { BsGrid1X2 } from "react-icons/bs";
 import { LuCornerUpLeft } from "react-icons/lu";
 import { CiMedicalCase } from "react-icons/ci";
 import { PiCopyrightLight } from "react-icons/pi";
-import { Container} from './sidebar.ts';
 import { usePathname } from 'next/navigation';
 
-// Créer le composant Container
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #283342;
+    padding: 20vh 0px 10px 0px;
+    color: #FFF;
 
-
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+`;
 const Admin = styled.div`
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   gap: 4px;
-   justify-content: space-between;
-   box-sizing: border-box;
-   margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 const Adminpro = styled.div`
-     display: flex;
-     align-items: center;
-     justify-content: start;
-     padding: 0px 0px;
-`
-const Profil = styled.div`
-    border-radius: 50%;
-     color: white;
-`;
-const Name = styled.div`
-     text-align: start;
-     margin-left: 20px;
-     
-     span{
-     font-size: 16px;
-     text-decoration: none;
-     color: white;
-    }
-    
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
 
 `;
+const Profil = styled.div`
+    border-radius: 50%;
+    color: white;
+`;
+const Name = styled.div`
+    margin-left: 20px;
+    span {
+        font-size: 16px;
+        color: white;
+    }
+`;
 const Icon = styled.div`
-      font-size: 14px;
+    font-size: 14px;
+    color: white;
+    margin-right: 15px;
 `;
 const P1 = styled.p`
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 `;
 const P = styled.p`
     font-size: 11px;
     font-weight: 400;
     color: #DABB0B;
+
+    @media (max-width: 768px) {
+        color: #fff;
+        margin-bottom: 30px!important;
+    }
+    @media (max-width: 324px) {
+       color: #fff;
+       margin-bottom: 30px!important;
+    }
 `;
 const StyledImage = styled(Image)`
-    width: 4Opx;
+    width: 40px;
     height: 40px;
-    border-radius: 50%
+    border-radius: 50%;
+`;
+const Navbar = styled.nav`
+    padding: 10px 0;
+    color: white;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `;
 const Ul = styled.ul`
-    display: inline-block;
-    padding: 0px;
-    margin: 0px;
-    margin-bottom: 35vh;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30vh;
     text-align: start;
-`;
-// Créer le composant Navbar
-const Navbar = styled.nav`
-  padding: 10px 0px 10px 0px;
-  color: white;
-  display: inline-block;
-  text-align: start;
 `;
 const Li = styled.li`
     list-style: none;
-    margin-bottom: 20px;
-    text-align: start;
+    margin-bottom: 10px;
     width: 100%;
-
-    transition: all 0.3s ease;
-
-  &.active {
-    background-color: #009099; 
-    color: white;
-    width: 100%;
-    padding: 10px 50.95px;
-  }
-
-  &.active .icon {
-    color: #4A4E52;
-  }
-
-  &.active .text {
-    color: #4A4E52; 
-    font-weight: bold;
-  }
+    
+    &.active {
+        background-color: #009099; 
+        padding: 0px; 
+        border-radius: 2px;
+    }
 `;
-
+const Span = styled.span`
+    font-size: 16px;
+    color: white;
+`;
 const Footer = styled.p`
     font-size: 12px;
-`
-const Sidebar = () => {
-    const pathname = usePathname();
+    text-align: center; 
+    margin-top: auto; 
+    display: inline-block;
+    width: 100%;
 
+    @media (max-width: 768px) {
+        width: 100%;
+        padding-bottom: 20px!important;
+    }
+`;
+const FooterItem = styled.div`
+    display: inline-block;
+    align-items: center;
+`
+const MobileIcons = styled.div`
+    display: none; 
+
+    @media (max-width: 768px) {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        color: white!important;
+        color: #000;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+        font-size: 20px!important;
+        padding: 20px;
+    }
+`;
+
+interface SidebarProps {
+    onSelect: (title: string) => void;
+}
+    
+const Sidebar = ({ onSelect }: SidebarProps) => {
+    const pathname = usePathname();
     const [isClient, setIsClient] = useState(false);
 
+    const menuItems = [
+        {
+            title: 'Tableau de bord',
+            icon: <BsGrid1X2 />,
+            path: '/dashboard',
+        },
+        {
+            title: 'Médicaments',
+            icon: <CiMedicalCase />,
+            path: '/dashboard/produits',
+        },
+    ];
+
     useEffect(() => {
-      setIsClient(true); // Assure que le composant s'exécute côté client
+        setIsClient(true); 
     }, []);
   
     if (!isClient) return null; // Empêche le rendu côté serveur
-  return (
-    <Container>
-        <Admin>
-            <Adminpro>
-                <Profil>
-                    <StyledImage src="/fadjma.jpg" width={40}  height={40}  alt='profil'/>
-                </Profil>
-                <Name>
-                    <P1>Modou Fall</P1>
-                    <P>Administrateur</P>
-                </Name>
-            </Adminpro>
-            <Icon>
-               <FaEllipsisV size={16}/>
-            </Icon>
-        </Admin>
-      <Navbar>
-           <Ul>
-               <Li className={pathname === '/dashboard' ? 'active' : ''}>
-                  <Link href="/dashboard" passHref style={{ textDecoration:'none' }}>
-                        <Adminpro>
-                            <Profil>
-                               <BsGrid1X2 />
-                            </Profil>
-                            <Name>
-                            <span>Tableau de bord</span>
-                            </Name>
-                        </Adminpro>
-                  </Link>
-               </Li>
-               <Li  className={pathname === '/dashboard/produits' ? 'active' : ''}>
-                  <Link href="/dashboard/produits" passHref style={{ textDecoration:'none' }}>
-                    <Adminpro>
-                        <Profil>
-                            <CiMedicalCase />
-                        </Profil>
-                        <Name>
-                            <span>Médicaments</span>
-                        </Name>
-                    </Adminpro>
-                  </Link>
-              </Li>
-           </Ul>
-            <Link  href="/login" passHref style={{ textDecoration:'none' }}>
+
+    return (
+        <Container>
+            <Admin>
                 <Adminpro>
                     <Profil>
-                        <LuCornerUpLeft />
+                        <StyledImage src="/fadjma.jpg" width={40} height={40} alt='profil'/>
                     </Profil>
                     <Name>
-                        <span>Deconnexion</span>
+                        <P1>Modou Fall</P1>
+                        <P>Administrateur</P>
                     </Name>
                 </Adminpro>
-            </Link>
-      </Navbar>
-      <Footer>
-           Propulsé par red team <PiCopyrightLight />2024 version 1.1.2
-      </Footer>
-    </Container>
-  );
+                <Icon>
+                   <FaEllipsisV size={16}/>
+                </Icon>
+            </Admin>
+            <Navbar>
+                <Ul>
+                    {menuItems.map(({ title, icon, path }) => (
+                        <Li key={title} className={pathname === path ? 'active' : ''}>
+                            <Link href={path}  style={{ textDecoration:'none' }}>
+                                <Adminpro onClick={() => onSelect(title)}>
+                                    <Icon className="icon">{icon}</Icon>
+                                    <Span className="text">{title}</Span>
+                                </Adminpro>
+                            </Link>
+                        </Li>
+                    ))}
+                </Ul>
+                <Link href="/login" passHref style={{ textDecoration:'none' }}>
+                    <Adminpro>
+                        <Profil>
+                            <LuCornerUpLeft />
+                        </Profil>
+                        <Name>
+                            <span>Déconnexion</span>
+                        </Name>
+                    </Adminpro>
+                </Link>
+            </Navbar>
+            
+            <Footer>
+                 <FooterItem style={{ paddingBottom:'0px' }}> 
+                    <MobileIcons style={{ color:'#FFF' }}>
+                        {menuItems.map(({ title, icon, path }) => (
+                            <Link key={title} href={path} style={{ color:'#FFF', fontSize: '20px' }}>
+                                {React.cloneElement(icon, {
+                                    className: pathname === path ? 'active' : '',
+                                })}
+                            </Link>
+                        ))}
+                        <Link href="/login" passHref style={{ textDecoration:'none' }}>
+                            <Profil>
+                                <LuCornerUpLeft />
+                            </Profil>
+                        </Link>
+                    </MobileIcons>
+                    <P>Propulsé par Red Team <PiCopyrightLight /> 2024 version 1.1.2</P>
+                 </FooterItem>
+            </Footer>
+        </Container>
+    );
 };
 
 export default Sidebar;
-

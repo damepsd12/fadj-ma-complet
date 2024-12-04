@@ -57,10 +57,10 @@ app.listen(7000, () => {
 
 
 
-// Route pour récupérer tous les hôtels
+// Route pour récupérer tous les produits
 app.get('/product', async (req, res) => {
   try {
-      const products = await ProductModel.find();  // Récupérer tous les hôtels
+      const products = await ProductModel.find();  // Récupérer tous les produits
       res.json(products);
   } catch (error) {
       console.error('Erreur lors de la récupération des produits:', error);
@@ -68,7 +68,7 @@ app.get('/product', async (req, res) => {
   }
 });
 
-// Route pour l'ajout d'un hôtel
+// Route pour l'ajout d'un produit
 app.post('/product', async (req, res) => {
   const { name, description, price, currency, imageUrl } = req.body;
 
